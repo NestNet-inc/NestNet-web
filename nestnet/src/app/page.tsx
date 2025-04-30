@@ -1,103 +1,144 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="relative flex justify-between items-center px-6 py-4">
+        <div className="flex items-center gap-12">
+          <Image
+            src="/nestnet-logo.svg"
+            alt="NestNet Logo"
+            width={64}
+            height={64}
+          />
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex gap-6">
+            <a href="#" className="text-gray-600">About us</a>
+            <a href="#" className="text-gray-600">Services</a>
+            <a href="#" className="text-gray-600">Contact us</a>
+          </nav>
+        </div>
+
+        {/* Connect Wallet Button - Desktop Only */}
+        <div className="hidden md:block">
+          <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md">
+            Connect Wallet
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden z-20 ml-auto"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {isMenuOpen ? (
+              <path
+                d="M6 18L18 6M6 6L18 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            ) : (
+              <path
+                d="M4 6H20M4 12H20M4 18H20"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            )}
+          </svg>
+        </button>
+
+        {/* Mobile Navigation */}
+        <div className={`
+          fixed md:hidden top-0 left-0 w-full h-auto bg-white shadow-lg
+          transform transition-transform duration-300 ease-in-out z-10
+          ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}
+        `}>
+          <nav className="flex flex-col items-center py-16 gap-6">
+            <a href="#" className="text-gray-600">About us</a>
+            <a href="#" className="text-gray-600">Services</a>
+            <a href="#" className="text-gray-600">Contact us</a>
+            {/* Connect Wallet Button - Mobile */}
+            <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md mt-4">
+              Connect Wallet
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-center text-[#4A3121] mb-12">
+          Welcome
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Pitch Your Home Idea Card */}
+          <div className="bg-[#E6F3F7] p-6 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Pitch your home Idea</h2>
+            <p className="text-gray-600 mb-6">
+              Post your home project, share your housing idea with the NestNet community,
+              including location details, estimated funding needed, timeline and goals with
+              project progress so far.
+            </p>
+            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md">
+              Continue
+            </button>
+          </div>
+          {/* Invest in a Property Card */}
+          <div className="bg-[#F3E6F7] p-6 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Invest in a property</h2>
+            <p className="text-gray-600 mb-6">
+              Support real world housing projects and earn returns, invest in a home on
+              NestNet to co-own/own based ownership shares.
+            </p>
+            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md">
+              Continue
+            </button>
+          </div>
+        </div>
+
+        {/* Property Grid */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+            <div key={item} className="rounded-lg overflow-hidden shadow-md">
+              <div className="relative h-48 w-full">
+                <Image
+                  src={`/property-${item}.svg`}
+                  alt={`Vacation Home ${item}`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold mb-2">Vacation Home by William Davies</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </p>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-[#8B4513] h-2 rounded-full" style={{ width: '60%' }}></div>
+                </div>
+                <p className="text-sm text-gray-600 mt-1">60% complete</p>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
