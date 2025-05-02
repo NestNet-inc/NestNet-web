@@ -26,7 +26,7 @@ export default function Home() {
 
         {/* Connect Wallet Button - Desktop Only */}
         <div className="hidden md:block">
-          <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md">
+          <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md cursor-pointer">
             Connect Wallet
           </button>
         </div>
@@ -74,7 +74,7 @@ export default function Home() {
             <a href="#" className="text-gray-600">Services</a>
             <a href="#" className="text-gray-600">Contact us</a>
             {/* Connect Wallet Button - Mobile */}
-            <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md mt-4">
+            <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md mt-4 cursor-pointer">
               Connect Wallet
             </button>
           </nav>
@@ -96,7 +96,7 @@ export default function Home() {
               including location details, estimated funding needed, timeline and goals with
               project progress so far.
             </p>
-            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md">
+            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
               Continue
             </button>
           </div>
@@ -107,7 +107,7 @@ export default function Home() {
               Support real world housing projects and earn returns, invest in a home on
               NestNet to co-own/own based ownership shares.
             </p>
-            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md">
+            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
               Continue
             </button>
           </div>
@@ -139,6 +139,6 @@ export default function Home() {
           ))}
         </div>
       </main>
-    </div>
+      <footer className="w-full px-4 py-18 bg-[#D5C9BF] mt-16"></footer>    </div>
   );
 }
