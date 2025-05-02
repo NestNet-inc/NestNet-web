@@ -89,6 +89,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Pitch Your Home Idea Card */}
+          {/* Pitch Your Home Idea Card */}
           <div className="bg-[#E6F3F7] p-6 rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Pitch your home Idea</h2>
             <p className="text-gray-600 mb-6">
@@ -96,10 +97,13 @@ export default function Home() {
               including location details, estimated funding needed, timeline and goals with
               project progress so far.
             </p>
-            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
-              Continue
-            </button>
+            <div className="flex justify-end">
+              <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
+                Continue
+              </button>
+            </div>
           </div>
+
           {/* Invest in a Property Card */}
           <div className="bg-[#F3E6F7] p-6 rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Invest in a property</h2>
@@ -107,9 +111,11 @@ export default function Home() {
               Support real world housing projects and earn returns, invest in a home on
               NestNet to co-own/own based ownership shares.
             </p>
-            <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
-              Continue
-            </button>
+            <div className="flex justify-end">
+              <button className="bg-[#8B4513] text-white px-6 py-2 rounded-md cursor-pointer">
+                Continue
+              </button>
+            </div>
           </div>
         </div>
 
